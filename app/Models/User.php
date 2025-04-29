@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -42,4 +44,34 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function aluno()
+    {
+        return $this->hasOne(Aluno::class);
+    }
+
+    public function professor()
+    {
+        return $this->hasOne(Professor::class);
+    }
+
+    public function responsavel()
+    {
+        return $this->hasOne(Responsavel::class);
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
+    // Relacionamentos
+    public function alunos() { return $this->hasOne(Aluno::class); }
+    public function professores() { return $this->hasOne(Professor::class); }
+    public function responsaveis() { return $this->hasOne(Responsavel::class); }
 }
