@@ -64,6 +64,4 @@ Route::middleware('tipo:professor')->group(function () {
     Route::put('avisos/{id}',[AvisoController::class,'update']);
     Route::post('tarefas',[TarefaController::class,'store']);
     Route::put('tarefas/{id}',[TarefaController::class,'update']);
-
-
 });
