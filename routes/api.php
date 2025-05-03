@@ -9,9 +9,20 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    // Importa rotas específicas por tipo de usuário
-    require __DIR__ . '/aluno.php';
-    require __DIR__ . '/professor.php';
-    require __DIR__ . '/responsavel.php';
-    require __DIR__ . '/administrador.php';
-});
+    Route::prefix('responsavel')->middleware(['auth:api'])->group(function () {
+        require __DIR__.'/responsavel.php';
+    });
+    
+    Route::prefix('administrador')->middleware(['auth:api'])->group(function () {
+        require __DIR__.'/administrador.php';
+    });
+    
+    Route::prefix('aluno')->middleware(['auth:api'])->group(function () {
+        require __DIR__.'/aluno.php';
+    });
+    
+    Route::prefix('professor')->middleware(['auth:api'])->group(function () {
+        require __DIR__.'/professor.php';
+    });
+    
+}); 

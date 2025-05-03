@@ -44,4 +44,9 @@ class Professor extends Model
 	{
 		return $this->hasMany(Turma::class, 'fk_id_professor');
 	}
+
+	public function usuario()
+	{
+		return $this->belongsTo(User::class, 'fk_user_id');
+	}
 }

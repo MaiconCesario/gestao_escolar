@@ -37,7 +37,7 @@ class Responsavel extends Model
 		'email'
 	];
 
-	public function aluno()
+	public function alunos()
 	{
 		return $this->belongsToMany(Aluno::class, 'aluno_responsavel', 'fk_id_responsavel', 'fk_id_aluno')
 					->withPivot('id_aluno_responsavel');
@@ -47,4 +47,10 @@ class Responsavel extends Model
 	{
 		return $this->hasMany(EnderecoResponsavel::class, 'fk_id_responsavel');
 	}
+
+	public function user()
+	{
+		return $this->belongsTo(User::class, 'fk_user_id');
+	}
+
 }

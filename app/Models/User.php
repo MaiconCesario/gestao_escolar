@@ -23,6 +23,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'tipo',
     ];
 
     /**
@@ -47,17 +48,17 @@ class User extends Authenticatable implements JWTSubject
 
     public function aluno()
     {
-        return $this->hasOne(Aluno::class);
+        return $this->hasOne(Aluno::class, 'fk_user_id');
     }
 
     public function professor()
     {
-        return $this->hasOne(Professor::class);
+        return $this->hasOne(Professor::class, 'fk_user_id', 'id');
     }
 
     public function responsavel()
     {
-        return $this->hasOne(Responsavel::class);
+        return $this->hasOne(Responsavel::class, 'fk_user_id');
     }
 
     public function getJWTIdentifier()
@@ -67,11 +68,11 @@ class User extends Authenticatable implements JWTSubject
 
     public function getJWTCustomClaims()
     {
-        return [];
+        return [
+            'id' => $this->id,
+            'tipo' => $this->tipo,
+            'email' => $this->email,
+            'name' => $this->name,
+        ];
     }
-
-    // Relacionamentos
-    public function alunos() { return $this->hasOne(Aluno::class); }
-    public function professores() { return $this->hasOne(Professor::class); }
-    public function responsaveis() { return $this->hasOne(Responsavel::class); }
 }

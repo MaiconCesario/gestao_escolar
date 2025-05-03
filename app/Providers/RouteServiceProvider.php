@@ -37,4 +37,24 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
     }
+
+    public function map()
+    {
+        Route::middleware('api')
+            ->prefix('api/aluno')
+            ->group(base_path('routes/aluno.php'));
+
+        Route::middleware('api')
+            ->prefix('api/professor')
+            ->group(base_path('routes/professor.php'));
+
+        Route::middleware('api')
+            ->prefix('api/administrador')
+            ->group(base_path('routes/administrador.php'));
+
+        Route::middleware('api')
+            ->prefix('api/responsavel')
+            ->group(base_path('routes/responsavel.php'));
+    }
+
 }

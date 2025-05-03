@@ -15,18 +15,18 @@ use App\Http\Controllers\ConvocacaoRecuperacaoController;
 use App\Http\Controllers\AvisoController;
 use App\Http\Controllers\TarefaController;
 
-Route::middleware('tipo:aluno')->group(function () {
-    Route::get('notas{id}',[NotaEscolarController::class,'index']);
+Route::middleware('auth:api','tipo:aluno')->group(function () {
+    Route::get('notas',[NotaEscolarController::class,'index']);
     Route::get('calendario-escolar',[CalendarioEscolarController::class,'index']);
-    Route::get('alunos{id}',[AlunoController::class, 'index']);
-    Route::get('responsaveis{id}',[ResponsavelController::class, 'index']);
-    Route::get('responsavel-aluno{id}',[AlunoResponsavelController::class,'index']);
-    Route::get('disciplina{id}',[DisciplinaController::class,'index']);
-    Route::get('turmas{id}',[TurmaController::class,'index']);
-    Route::get('horario-escolar{id}',[HorarioEscolarController::class,'index']);
-    Route::get('ocorrencias{id}',[OcorrenciaController::class,'index']);
-    Route::get('avaliacoes{id}',[AvaliacaoController::class,'index']);
-    Route::get('recuperacao{id}',[ConvocacaoRecuperacaoController::class,'index']);
+    Route::get('alunos/',[AlunoController::class, 'index']);
+    Route::get('responsaveis',[ResponsavelController::class, 'index']);
+    Route::get('responsavel-aluno',[AlunoResponsavelController::class,'index']);
+    Route::get('disciplina',[DisciplinaController::class,'index']);
+    Route::get('turmas',[TurmaController::class,'index']);
+    Route::get('horario-escolar',[HorarioEscolarController::class,'index']);
+    Route::get('ocorrencias',[OcorrenciaController::class,'index']);
+    Route::get('avaliacoes',[AvaliacaoController::class,'index']);
+    Route::get('recuperacao',[ConvocacaoRecuperacaoController::class,'index']);
     Route::get('avisos',[AvisoController::class,'index']);
-    Route::get('tarefas{id}',[TarefaController::class,'index']);
+    Route::get('tarefas',[TarefaController::class,'index']);
 });

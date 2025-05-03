@@ -66,6 +66,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'auth:api' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
         'tipo' => \App\Http\Middleware\TipoUsuario::class,
+        'tipo.responsavel' => \App\Http\Middleware\TipoResponsavel::class,
+        'tipo.Aluno' => \App\Http\Middleware\TipoResponsavel::class,
 
     ];
 }
