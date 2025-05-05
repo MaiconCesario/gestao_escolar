@@ -84,4 +84,9 @@ class Aluno extends Model
 	{
 		return $this->hasMany(Presenca::class, 'fk_id_aluno');
 	}
+
+	public function turma()
+	{
+		return $this->belongsTo(Turma::class, 'fk_id_turma', 'id_turma');
+	}
 }

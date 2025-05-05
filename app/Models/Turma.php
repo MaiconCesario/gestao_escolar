@@ -75,4 +75,9 @@ class Turma extends Model
 	{
 		return $this->hasMany(Tarefa::class, 'fk_id_turma');
 	}
+
+	public function aluno()
+	{
+		return $this->hasMany(Aluno::class, 'fk_id_turma', 'id_turma');
+	}
 }

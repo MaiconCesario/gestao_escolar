@@ -61,6 +61,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(Responsavel::class, 'fk_user_id');
     }
 
+    public function administrador()
+    {
+        return $this->hasOne(Administrador::class, 'fk_user_id');
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

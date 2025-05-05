@@ -25,7 +25,7 @@ Route::middleware('auth:api','tipo:administrador')->group(function () {
     Route::put('calendario-escolar',[CalendarioEscolarController::class,'update']);
 
     Route::get('alunos',[AlunoController::class, 'index']);
-    Route::post('alunos',[AlunoController::class, 'post']);
+    Route::post('alunos',[AlunoController::class, 'store']);
     Route::put('alunos/{idAluno}',[AlunoController::class, 'update']);
     
 });
